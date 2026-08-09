@@ -17,14 +17,22 @@ type FotoGallery = {
 };
 
 export default function UndanganPage() {
-  const [katalogAktif, setKatalogAktif] = useState<KatalogAktif>("Undangan");
-  const [seriAktif, setSeriAktif] = useState("Semua");
-  const [fotoAktif, setFotoAktif] = useState<number | null>(null);
+  const [katalogAktif, setKatalogAktif] =
+    useState<KatalogAktif>("Undangan");
+
+  const [seriAktif, setSeriAktif] =
+    useState("Semua");
+
+  const [fotoAktif, setFotoAktif] =
+    useState<number | null>(null);
 
   const nomorWhatsApp = "6282192148895";
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(
+      window.location.search
+    );
+
     const jenis = params.get("jenis");
 
     if (jenis === "yasin") {
@@ -81,25 +89,33 @@ export default function UndanganPage() {
     8: "Seri Rustic",
   };
 
-  const semuaFotoUndangan: FotoGallery[] = Object.entries(gallery).flatMap(
-    ([id, fotoList]) => {
-      const seriId = Number(id);
-      const kode = kodeSeri[seriId];
+  const semuaFotoUndangan: FotoGallery[] =
+    Object.entries(gallery).flatMap(
+      ([id, fotoList]) => {
+        const seriId = Number(id);
+        const kode = kodeSeri[seriId];
 
-      return fotoList.map((src, index) => ({
-        src,
-        seriId,
-        nama: namaSeriById[seriId],
-        kode: `${kode}-${String(index + 1).padStart(2, "0")}`,
-      }));
-    }
-  );
+        return fotoList.map((src, index) => ({
+          src,
+          seriId,
+          nama: namaSeriById[seriId],
+          kode: `${kode}-${String(index + 1).padStart(
+            2,
+            "0"
+          )}`,
+        }));
+      }
+    );
 
-  const semuaFotoYasin: FotoGallery[] = galleryYasin.map((src, index) => ({
-    src,
-    nama: "Buku Yasin",
-    kode: `YASIN-${String(index + 1).padStart(2, "0")}`,
-  }));
+  const semuaFotoYasin: FotoGallery[] =
+    galleryYasin.map((src, index) => ({
+      src,
+      nama: "Buku Yasin",
+      kode: `YASIN-${String(index + 1).padStart(
+        2,
+        "0"
+      )}`,
+    }));
 
   const fotoGallery: FotoGallery[] =
     katalogAktif === "Buku Yasin"
@@ -107,37 +123,45 @@ export default function UndanganPage() {
       : seriAktif === "Semua"
         ? semuaFotoUndangan
         : semuaFotoUndangan.filter(
-            (foto) => foto.seriId === seriGallery[seriAktif]
+            (foto) =>
+              foto.seriId ===
+              seriGallery[seriAktif]
           );
 
-  const undanganProducts = products.filter((product) => {
-    const dataProduk = (
-      product.name +
-      " " +
-      product.category +
-      " " +
-      product.material +
-      " " +
-      product.finishing
-    ).toLowerCase();
+  const undanganProducts = products.filter(
+    (product) => {
+      const dataProduk = (
+        product.name +
+        " " +
+        product.category +
+        " " +
+        product.material +
+        " " +
+        product.finishing
+      ).toLowerCase();
 
-    return (
-      dataProduk.includes("undangan") ||
-      dataProduk.includes("series") ||
-      dataProduk.includes("seri")
-    );
-  });
+      return (
+        dataProduk.includes("undangan") ||
+        dataProduk.includes("series") ||
+        dataProduk.includes("seri")
+      );
+    }
+  );
 
   const filteredProducts =
     katalogAktif === "Undangan"
       ? seriAktif === "Semua"
         ? undanganProducts
         : undanganProducts.filter((product) => {
-            const namaProduk = product.name.toLowerCase();
-            const namaSeri = seriAktif.toLowerCase();
+            const namaProduk =
+              product.name.toLowerCase();
+
+            const namaSeri =
+              seriAktif.toLowerCase();
 
             return (
-              namaProduk === namaSeri || namaProduk.includes(namaSeri)
+              namaProduk === namaSeri ||
+              namaProduk.includes(namaSeri)
             );
           })
       : [];
@@ -145,30 +169,58 @@ export default function UndanganPage() {
   useEffect(() => {
     if (fotoAktif === null) return;
 
-    const handleKeyDown = (event: KeyboardEvent) => {
+    const handleKeyDown = (
+      event: KeyboardEvent
+    ) => {
       if (event.key === "Escape") {
         setFotoAktif(null);
       }
 
       if (event.key === "ArrowRight") {
         setFotoAktif((current) => {
-          if (current === null || fotoGallery.length === 0) return null;
-          return (current + 1) % fotoGallery.length;
+          if (
+            current === null ||
+            fotoGallery.length === 0
+          ) {
+            return null;
+          }
+
+          return (
+            (current + 1) %
+            fotoGallery.length
+          );
         });
       }
 
       if (event.key === "ArrowLeft") {
         setFotoAktif((current) => {
-          if (current === null || fotoGallery.length === 0) return null;
-          return (current - 1 + fotoGallery.length) % fotoGallery.length;
+          if (
+            current === null ||
+            fotoGallery.length === 0
+          ) {
+            return null;
+          }
+
+          return (
+            (current -
+              1 +
+              fotoGallery.length) %
+            fotoGallery.length
+          );
         });
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener(
+      "keydown",
+      handleKeyDown
+    );
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener(
+        "keydown",
+        handleKeyDown
+      );
     };
   }, [fotoAktif, fotoGallery.length]);
 
@@ -186,15 +238,35 @@ export default function UndanganPage() {
 
   const fotoSebelumnya = () => {
     setFotoAktif((current) => {
-      if (current === null || fotoGallery.length === 0) return null;
-      return (current - 1 + fotoGallery.length) % fotoGallery.length;
+      if (
+        current === null ||
+        fotoGallery.length === 0
+      ) {
+        return null;
+      }
+
+      return (
+        (current -
+          1 +
+          fotoGallery.length) %
+        fotoGallery.length
+      );
     });
   };
 
   const fotoBerikutnya = () => {
     setFotoAktif((current) => {
-      if (current === null || fotoGallery.length === 0) return null;
-      return (current + 1) % fotoGallery.length;
+      if (
+        current === null ||
+        fotoGallery.length === 0
+      ) {
+        return null;
+      }
+
+      return (
+        (current + 1) %
+        fotoGallery.length
+      );
     });
   };
 
@@ -202,6 +274,7 @@ export default function UndanganPage() {
     if (fotoAktif === null) return;
 
     const foto = fotoGallery[fotoAktif];
+
     if (!foto) return;
 
     const pesan =
@@ -210,7 +283,8 @@ export default function UndanganPage() {
         : `Halo Mell Studio, saya tertarik dengan desain undangan ${foto.kode}. Mohon info harga dan detailnya.`;
 
     const url =
-      `https://wa.me/${nomorWhatsApp}?text=` + encodeURIComponent(pesan);
+      `https://wa.me/${nomorWhatsApp}?text=` +
+      encodeURIComponent(pesan);
 
     window.open(url, "_blank");
   };
@@ -218,6 +292,11 @@ export default function UndanganPage() {
   return (
     <main className="min-h-screen bg-white">
       <section className="mx-auto max-w-7xl px-6 py-12">
+
+        {/* =========================
+            JUDUL KATALOG
+        ========================= */}
+
         <div className="mb-12 text-center">
           <h1 className="text-4xl font-bold text-slate-900">
             {katalogAktif === "Buku Yasin"
@@ -231,6 +310,11 @@ export default function UndanganPage() {
               : "Temukan berbagai pilihan undangan pernikahan Mell Studio Gorontalo, mulai dari undangan hardcover, softcover, custom, acrylic, rustic, dan berbagai desain lainnya."}
           </p>
         </div>
+
+
+        {/* =========================
+            FILTER SERI
+        ========================= */}
 
         {katalogAktif === "Undangan" && (
           <>
@@ -260,6 +344,7 @@ export default function UndanganPage() {
                   ? "Semua Koleksi Undangan"
                   : seriAktif}
               </h2>
+
               <p className="mt-2 text-sm text-slate-500">
                 {fotoGallery.length} sampel undangan
               </p>
@@ -267,153 +352,227 @@ export default function UndanganPage() {
           </>
         )}
 
+
+        {/* =========================
+            BUKU YASIN
+        ========================= */}
+
         {katalogAktif === "Buku Yasin" && (
           <div className="mb-8">
             <h2 className="text-2xl font-semibold text-slate-900">
               Buku Yasin
             </h2>
+
             <p className="mt-2 text-sm text-slate-500">
               {fotoGallery.length} sampel Buku Yasin
             </p>
           </div>
         )}
 
+
+        {/* =========================
+            GALLERY
+        ========================= */}
+
         {fotoGallery.length > 0 && (
           <div className="mb-16 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-            {fotoGallery.map((foto, index) => (
-              <button
-                key={`${foto.src}-${index}`}
-                type="button"
-                onClick={() => setFotoAktif(index)}
-                className="group relative aspect-[3/4] overflow-hidden rounded-xl bg-gray-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
-                aria-label={`Buka desain ${foto.kode}`}
-              >
-                <Image
-                  src={foto.src}
-                  alt={`${foto.nama} - ${foto.kode}`}
-                  fill
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
-                  className="object-cover transition duration-500 group-hover:scale-105"
-                />
+            {fotoGallery.map(
+              (foto, index) => (
+                <button
+                  key={`${foto.src}-${index}`}
+                  type="button"
+                  onClick={() =>
+                    setFotoAktif(index)
+                  }
+                  className="group relative aspect-[3/4] overflow-hidden rounded-xl bg-gray-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
+                  aria-label={`Buka desain ${foto.kode}`}
+                >
+                  <Image
+                    src={foto.src}
+                    alt={`${foto.nama} - ${foto.kode}`}
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
+                    className="object-cover transition duration-500 group-hover:scale-105"
+                  />
 
-                <div className="absolute bottom-2 left-2 rounded-md bg-black/70 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm">
-                  {foto.kode}
-                </div>
+                  <div className="absolute bottom-2 left-2 rounded-md bg-black/70 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                    {foto.kode}
+                  </div>
 
-                <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/10" />
-              </button>
-            ))}
+                  <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/10" />
+                </button>
+              )
+            )}
           </div>
         )}
 
-        {katalogAktif === "Undangan" && filteredProducts.length > 0 && (
-          <>
-            <div className="mb-8">
-              <h2 className="text-2xl font-semibold text-slate-900">
-                Produk Undangan Mell Studio
-              </h2>
-              <p className="mt-2 text-sm leading-6 text-slate-500">
-                Pilihan produk undangan pernikahan Mell Studio di Gorontalo
-                dengan berbagai bahan, desain, dan finishing.
-              </p>
-            </div>
 
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {filteredProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-          </>
-        )}
+        {/* =========================
+            PRODUK UNDANGAN
+        ========================= */}
+
+        {katalogAktif === "Undangan" &&
+          filteredProducts.length > 0 && (
+            <>
+              <div className="mb-8">
+                <h2 className="text-2xl font-semibold text-slate-900">
+                  Produk Undangan Mell Studio
+                </h2>
+
+                <p className="mt-2 text-sm leading-6 text-slate-500">
+                  Pilihan produk undangan pernikahan Mell Studio di Gorontalo
+                  dengan berbagai bahan, desain, dan finishing.
+                </p>
+              </div>
+
+              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                {filteredProducts.map(
+                  (product) => (
+                    <ProductCard
+                      key={product.id}
+                      product={product}
+                    />
+                  )
+                )}
+              </div>
+            </>
+          )}
+
+
+        {/* =========================
+            KOSONG
+        ========================= */}
 
         {fotoGallery.length === 0 && (
           <div className="mt-10 rounded-xl bg-gray-50 py-16 text-center text-gray-500">
             Belum ada sampel tersedia.
           </div>
         )}
+
       </section>
 
-      {fotoAktif !== null && fotoGallery[fotoAktif] && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
-          onClick={() => setFotoAktif(null)}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Preview foto produk"
-        >
-          <button
-            type="button"
-            onClick={() => setFotoAktif(null)}
-            className="absolute right-4 top-4 z-30 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-2xl text-white backdrop-blur-sm transition hover:bg-white/20"
-            aria-label="Tutup preview"
-          >
-            ×
-          </button>
 
-          <div className="absolute left-1/2 top-5 z-30 -translate-x-1/2 rounded-full bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-sm">
-            <span className="font-semibold">
-              {fotoGallery[fotoAktif].kode}
-            </span>
-            <span className="mx-2 text-white/40">•</span>
-            {fotoAktif + 1} / {fotoGallery.length}
-          </div>
+      {/* =========================
+          FULLSCREEN PREVIEW
+      ========================= */}
 
+      {fotoAktif !== null &&
+        fotoGallery[fotoAktif] && (
           <div
-            className="relative h-[76vh] w-full max-w-5xl"
-            onClick={(event) => event.stopPropagation()}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+            onClick={() =>
+              setFotoAktif(null)
+            }
+            role="dialog"
+            aria-modal="true"
+            aria-label="Preview foto produk"
           >
-            <Image
-              src={fotoGallery[fotoAktif].src}
-              alt={`${fotoGallery[fotoAktif].nama} - ${fotoGallery[fotoAktif].kode}`}
-              fill
-              sizes="100vw"
-              className="object-contain"
-              priority
-            />
+
+            {/* TUTUP */}
+
+            <button
+              type="button"
+              onClick={() =>
+                setFotoAktif(null)
+              }
+              className="absolute right-4 top-4 z-30 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-2xl text-white backdrop-blur-sm transition hover:bg-white/20"
+              aria-label="Tutup preview"
+            >
+              ×
+            </button>
+
+
+            {/* NOMOR FOTO */}
+
+            <div className="absolute left-1/2 top-5 z-30 -translate-x-1/2 rounded-full bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-sm">
+              <span className="font-semibold">
+                {fotoGallery[fotoAktif].kode}
+              </span>
+
+              <span className="mx-2 text-white/40">
+                •
+              </span>
+
+              {fotoAktif + 1} /{" "}
+              {fotoGallery.length}
+            </div>
+
+
+            {/* FOTO BESAR */}
+
+            <div
+              className="relative h-[76vh] w-full max-w-5xl"
+              onClick={(event) =>
+                event.stopPropagation()
+              }
+            >
+              <Image
+                src={
+                  fotoGallery[fotoAktif].src
+                }
+                alt={`${fotoGallery[fotoAktif].nama} - ${fotoGallery[fotoAktif].kode}`}
+                fill
+                sizes="100vw"
+                className="object-contain"
+                priority
+              />
+            </div>
+
+
+            {/* SEBELUMNYA */}
+
+            {fotoGallery.length > 1 && (
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  fotoSebelumnya();
+                }}
+                className="absolute left-3 top-1/2 z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-3xl text-white backdrop-blur-sm transition hover:bg-white/20 sm:left-6"
+                aria-label="Foto sebelumnya"
+              >
+                ‹
+              </button>
+            )}
+
+
+            {/* BERIKUTNYA */}
+
+            {fotoGallery.length > 1 && (
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  fotoBerikutnya();
+                }}
+                className="absolute right-3 top-1/2 z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-3xl text-white backdrop-blur-sm transition hover:bg-white/20 sm:right-6"
+                aria-label="Foto berikutnya"
+              >
+                ›
+              </button>
+            )}
+
+
+            {/* WHATSAPP */}
+
+            <div
+              className="absolute bottom-5 left-1/2 z-30 -translate-x-1/2"
+              onClick={(event) =>
+                event.stopPropagation()
+              }
+            >
+              <button
+                type="button"
+                onClick={pesanWhatsApp}
+                className="rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-green-700 hover:shadow-xl"
+              >
+                Pesan Desain Ini
+              </button>
+            </div>
+
           </div>
-
-          {fotoGallery.length > 1 && (
-            <button
-              type="button"
-              onClick={(event) => {
-                event.stopPropagation();
-                fotoSebelumnya();
-              }}
-              className="absolute left-3 top-1/2 z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-3xl text-white backdrop-blur-sm transition hover:bg-white/20 sm:left-6"
-              aria-label="Foto sebelumnya"
-            >
-              ‹
-            </button>
-          )}
-
-          {fotoGallery.length > 1 && (
-            <button
-              type="button"
-              onClick={(event) => {
-                event.stopPropagation();
-                fotoBerikutnya();
-              }}
-              className="absolute right-3 top-1/2 z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-3xl text-white backdrop-blur-sm transition hover:bg-white/20 sm:right-6"
-              aria-label="Foto berikutnya"
-            >
-              ›
-            </button>
-          )}
-
-          <div
-            className="absolute bottom-5 left-1/2 z-30 -translate-x-1/2"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <button
-              type="button"
-              onClick={pesanWhatsApp}
-              className="rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-green-700 hover:shadow-xl"
-            >
-              Pesan Desain Ini
-            </button>
-          </div>
-        </div>
-      )}
+        )}
     </main>
   );
 }
