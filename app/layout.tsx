@@ -2,35 +2,48 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Mell Studio | Undangan Pernikahan & Buku Yasin Gorontalo",
+  metadataBase: new URL("https://mellstudio.id"),
+
+  title: {
+    default: "Mell Studio | Percetakan Undangan Gorontalo",
+    template: "%s | Mell Studio",
+  },
 
   description:
-    "Mell Studio adalah percetakan undangan pernikahan dan Buku Yasin di Gorontalo. Tersedia undangan hardcover, softcover, custom, serta Buku Yasin dengan berbagai pilihan desain dan finishing.",
+    "Mell Studio adalah percetakan undangan pernikahan di Gorontalo. Menyediakan undangan hardcover, softcover, custom, undangan acrylic, undangan rustic, serta Buku Yasin.",
 
   keywords: [
     "Mell Studio",
     "Mell Studio Gorontalo",
     "percetakan undangan Gorontalo",
+    "percetakan undangan pernikahan Gorontalo",
     "undangan pernikahan Gorontalo",
-    "undangan pernikahan",
-    "undangan hardcover",
-    "undangan softcover",
+    "undangan hardcover Gorontalo",
+    "undangan softcover Gorontalo",
+    "undangan custom Gorontalo",
+    "undangan acrylic Gorontalo",
+    "undangan rustic Gorontalo",
     "Buku Yasin Gorontalo",
-    "percetakan Buku Yasin",
+    "percetakan Buku Yasin Gorontalo",
   ],
 
-  authors: [{ name: "Mell Studio" }],
+  authors: [
+    {
+      name: "Mell Studio",
+      url: "https://mellstudio.id",
+    },
+  ],
 
   creator: "Mell Studio",
 
-  metadataBase: new URL("https://mellstudio.id"),
+  publisher: "Mell Studio",
 
   alternates: {
     canonical: "/",
   },
 
   openGraph: {
-    title: "Mell Studio | Undangan Pernikahan & Buku Yasin Gorontalo",
+    title: "Mell Studio | Percetakan Undangan Gorontalo",
 
     description:
       "Percetakan Undangan Pernikahan & Buku Yasin Mell Studio – Gorontalo.",
@@ -44,9 +57,26 @@ export const metadata: Metadata = {
     type: "website",
   },
 
+  twitter: {
+    card: "summary_large_image",
+
+    title: "Mell Studio | Percetakan Undangan Gorontalo",
+
+    description:
+      "Percetakan undangan pernikahan, hardcover, softcover, custom, acrylic, rustic dan Buku Yasin di Gorontalo.",
+  },
+
   robots: {
     index: true,
     follow: true,
+
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 
