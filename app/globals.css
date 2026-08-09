@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #fffdf9;
   --foreground: #171717;
+  --gold: #b4873f;
+  --gold-soft: #d8c7a4;
 }
 
 @theme inline {
@@ -12,8 +14,97 @@
   --font-mono: var(--font-geist-mono);
 }
 
+html {
+  background: var(--background);
+}
+
 body {
-  background: #ffffff;
-  color: #171717;
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(216, 199, 164, 0.14),
+      transparent 32%
+    ),
+    linear-gradient(
+      180deg,
+      #fffdf9 0%,
+      #ffffff 42%,
+      #fffdf9 100%
+    );
+  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================================================
+   ORNAMEN BUNGA - KIRI ATAS
+   Tidak mengganggu isi website
+========================================================= */
+
+body::before {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  top: -18px;
+  left: -18px;
+  width: 190px;
+  height: 190px;
+  pointer-events: none;
+  opacity: 0.72;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='rgb(180,135,63)' stroke-width='1.2' opacity='.65'%3E%3Cpath d='M8 28 C58 42 82 78 112 122 C132 150 158 168 204 174'/%3E%3Cpath d='M42 70 C72 52 94 38 126 28'/%3E%3Cpath d='M75 108 C55 98 38 94 22 96'/%3E%3C/g%3E%3Cg fill='rgb(255,255,255)' stroke='rgb(216,199,164)' stroke-width='1.2'%3E%3Cellipse cx='48' cy='38' rx='13' ry='28' transform='rotate(-48 48 38)'/%3E%3Cellipse cx='72' cy='35' rx='13' ry='28' transform='rotate(15 72 35)'/%3E%3Cellipse cx='84' cy='58' rx='13' ry='28' transform='rotate(55 84 58)'/%3E%3Cellipse cx='60' cy='62' rx='13' ry='28' transform='rotate(105 60 62)'/%3E%3Cellipse cx='48' cy='38' rx='7' ry='7' fill='rgb(216,199,164)'/%3E%3C/g%3E%3Cg fill='rgb(216,199,164)' opacity='.75'%3E%3Cellipse cx='116' cy='48' rx='7' ry='18' transform='rotate(48 116 48)'/%3E%3Cellipse cx='136' cy='70' rx='7' ry='18' transform='rotate(-45 136 70)'/%3E%3Cellipse cx='100' cy='92' rx='7' ry='18' transform='rotate(70 100 92)'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* =========================================================
+   ORNAMEN BUNGA - KANAN BAWAH
+========================================================= */
+
+body::after {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  right: -18px;
+  bottom: -18px;
+  width: 210px;
+  height: 210px;
+  pointer-events: none;
+  opacity: 0.68;
+  transform: rotate(180deg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='rgb(180,135,63)' stroke-width='1.2' opacity='.65'%3E%3Cpath d='M8 28 C58 42 82 78 112 122 C132 150 158 168 204 174'/%3E%3Cpath d='M42 70 C72 52 94 38 126 28'/%3E%3Cpath d='M75 108 C55 98 38 94 22 96'/%3E%3C/g%3E%3Cg fill='rgb(255,255,255)' stroke='rgb(216,199,164)' stroke-width='1.2'%3E%3Cellipse cx='48' cy='38' rx='13' ry='28' transform='rotate(-48 48 38)'/%3E%3Cellipse cx='72' cy='35' rx='13' ry='28' transform='rotate(15 72 35)'/%3E%3Cellipse cx='84' cy='58' rx='13' ry='28' transform='rotate(55 84 58)'/%3E%3Cellipse cx='60' cy='62' rx='13' ry='28' transform='rotate(105 60 62)'/%3E%3Cellipse cx='48' cy='38' rx='7' ry='7' fill='rgb(216,199,164)'/%3E%3C/g%3E%3Cg fill='rgb(216,199,164)' opacity='.75'%3E%3Cellipse cx='116' cy='48' rx='7' ry='18' transform='rotate(48 116 48)'/%3E%3Cellipse cx='136' cy='70' rx='7' ry='18' transform='rotate(-45 136 70)'/%3E%3Cellipse cx='100' cy='92' rx='7' ry='18' transform='rotate(70 100 92)'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* =========================================================
+   ISI WEBSITE SELALU DI ATAS ORNAMEN
+========================================================= */
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 640px) {
+  body::before {
+    width: 125px;
+    height: 125px;
+    top: -10px;
+    left: -10px;
+    opacity: 0.55;
+  }
+
+  body::after {
+    width: 140px;
+    height: 140px;
+    right: -10px;
+    bottom: -10px;
+    opacity: 0.5;
+  }
 }
