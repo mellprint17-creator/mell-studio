@@ -1,11 +1,72 @@
+import type { Metadata } from "next";
 import products from "../../Data/products";
 import gallery from "../../Data/gallery";
 
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata> {
+  const { id } = await params;
+
+  const product = products.find(
+    (item) => item.id === Number(id)
+  );
+
+  if (!product) {
+    return {
+      title: "Produk Tidak Ditemukan | Mell Studio",
+      description:
+        "Produk Mell Studio tidak ditemukan.",
+    };
+  }
+
+  return {
+    title: `${product.name} | Mell Studio`,
+
+    description: `${product.name} - ${product.category}. ${product.description}`,
+
+    alternates: {
+      canonical: `https://mellstudio.id/produk/${product.id}`,
+    },
+
+    openGraph: {
+      title: `${product.name} | Mell Studio`,
+
+      description: `${product.name} - ${product.category}. ${product.description}`,
+
+      url: `https://mellstudio.id/produk/${product.id}`,
+
+      siteName: "Mell Studio",
+
+      locale: "id_ID",
+
+      type: "website",
+
+      images: [
+        {
+          url: product.image,
+          width: 1200,
+          height: 630,
+          alt: product.name,
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.name} | Mell Studio`,
+      description: product.description,
+      images: [product.image],
+    },
+  };
+}
+
 export default async function ProductDetail({
   params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+}: Props) {
   const { id } = await params;
 
   const product = products.find(
@@ -14,10 +75,10 @@ export default async function ProductDetail({
 
   if (!product) {
     return (
-      <main className="min-h-screen bg-white p-10 text-center">
-        <p className="text-lg text-slate-600">
+      <main className="flex min-h-screen items-center justify-center px-6">
+        <h1 className="text-2xl font-bold text-slate-900">
           Produk tidak ditemukan
-        </p>
+        </h1>
       </main>
     );
   }
@@ -31,6 +92,7 @@ export default async function ProductDetail({
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 md:grid-cols-2">
 
         {/* FOTO PRODUK UTAMA */}
+
         <div>
 
           <div className="overflow-hidden rounded-3xl">
@@ -41,7 +103,9 @@ export default async function ProductDetail({
             />
           </div>
 
-          {/* SAMPel UNDANGAN */}
+
+          {/* SAMPEL UNDANGAN */}
+
           {sampleImages.length > 0 && (
             <div className="mt-8">
 
@@ -80,6 +144,7 @@ export default async function ProductDetail({
 
 
         {/* DETAIL PRODUK */}
+
         <div>
 
           <p className="text-sm text-slate-500">
@@ -98,9 +163,9 @@ export default async function ProductDetail({
           <div className="mt-8 space-y-5">
 
             <div>
-              <h3 className="font-bold text-slate-900">
+              <h2 className="font-bold text-slate-900">
                 Material
-              </h3>
+              </h2>
 
               <p className="text-slate-600">
                 {product.material}
@@ -109,9 +174,9 @@ export default async function ProductDetail({
 
 
             <div>
-              <h3 className="font-bold text-slate-900">
+              <h2 className="font-bold text-slate-900">
                 Finishing
-              </h3>
+              </h2>
 
               <p className="text-slate-600">
                 {product.finishing}
@@ -120,9 +185,9 @@ export default async function ProductDetail({
 
 
             <div>
-              <h3 className="font-bold text-slate-900">
+              <h2 className="font-bold text-slate-900">
                 Informasi Pemesanan
-              </h3>
+              </h2>
 
               <p className="text-slate-600">
                 Semua pesanan sudah termasuk label cetak nama
@@ -132,9 +197,9 @@ export default async function ProductDetail({
 
 
             <div>
-              <h3 className="font-bold text-slate-900">
+              <h2 className="font-bold text-slate-900">
                 Bonus
-              </h3>
+              </h2>
 
               <p className="text-slate-600">
                 Tersedia bonus undangan website untuk tipe
@@ -146,6 +211,7 @@ export default async function ProductDetail({
 
 
           {/* WHATSAPP */}
+
           <a
             href={`https://wa.me/6282192148895?text=Halo%20Mell%20Studio,%20saya%20tertarik%20dengan%20${encodeURIComponent(
               product.name
