@@ -87,7 +87,45 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
-      <body>{children}</body>
+      <body>
+        {children}
+
+        {/* INFORMASI BISNIS UNTUK GOOGLE */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+
+              name: "Mell Studio",
+
+              description:
+                "Percetakan undangan pernikahan dan Buku Yasin di Gorontalo.",
+
+              url: "https://mellstudio.id",
+
+              telephone: "+6282192148895",
+
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Kota Gorontalo",
+                addressRegion: "Gorontalo",
+                addressCountry: "ID",
+              },
+
+              areaServed: {
+                "@type": "City",
+                name: "Gorontalo",
+              },
+
+              sameAs: [
+                "https://www.instagram.com/mellstudio_gtlo/",
+              ],
+            }),
+          }}
+        />
+      </body>
     </html>
   );
 }
