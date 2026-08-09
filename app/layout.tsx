@@ -2,41 +2,46 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mellstudio.id"),
-
-  title: {
-    default: "Mell Studio | Undangan Pernikahan & Buku Yasin",
-    template: "%s | Mell Studio",
-  },
+  title: "Mell Studio | Undangan Pernikahan & Buku Yasin Gorontalo",
 
   description:
-    "Mell Studio menyediakan undangan pernikahan premium dan Buku Yasin dengan desain elegan, material berkualitas, dan hasil cetak rapi.",
+    "Mell Studio adalah percetakan undangan pernikahan dan Buku Yasin di Gorontalo. Tersedia undangan hardcover, softcover, custom, serta Buku Yasin dengan berbagai pilihan desain dan finishing.",
 
-  openGraph: {
-    title: "Mell Studio | Undangan Pernikahan & Buku Yasin",
-    description:
-      "Katalog undangan pernikahan premium dan Buku Yasin dari Mell Studio.",
-    url: "https://mellstudio.id",
-    siteName: "Mell Studio",
-    locale: "id_ID",
-    type: "website",
+  keywords: [
+    "Mell Studio",
+    "Mell Studio Gorontalo",
+    "percetakan undangan Gorontalo",
+    "undangan pernikahan Gorontalo",
+    "undangan pernikahan",
+    "undangan hardcover",
+    "undangan softcover",
+    "Buku Yasin Gorontalo",
+    "percetakan Buku Yasin",
+  ],
 
-    images: [
-      {
-        url: "/logo-new.png",
-        width: 1200,
-        height: 630,
-        alt: "Mell Studio",
-      },
-    ],
+  authors: [{ name: "Mell Studio" }],
+
+  creator: "Mell Studio",
+
+  metadataBase: new URL("https://mellstudio.id"),
+
+  alternates: {
+    canonical: "/",
   },
 
-  twitter: {
-    card: "summary_large_image",
-    title: "Mell Studio | Undangan Pernikahan & Buku Yasin",
+  openGraph: {
+    title: "Mell Studio | Undangan Pernikahan & Buku Yasin Gorontalo",
+
     description:
-      "Katalog undangan pernikahan premium dan Buku Yasin dari Mell Studio.",
-    images: ["/logo-new.png"],
+      "Percetakan Undangan Pernikahan & Buku Yasin Mell Studio – Gorontalo.",
+
+    url: "https://mellstudio.id",
+
+    siteName: "Mell Studio",
+
+    locale: "id_ID",
+
+    type: "website",
   },
 
   robots: {
