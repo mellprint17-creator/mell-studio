@@ -5,9 +5,14 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://mellstudio.id"),
 
   icons: {
-    icon: "/new logo mell studio.png",
-    shortcut: "/new logo mell studio.png",
-    apple: "/new logo mell studio.png",
+    icon: [
+      {
+        url: "/favicon.png",
+        type: "image/png",
+      },
+    ],
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
 
   title: {
