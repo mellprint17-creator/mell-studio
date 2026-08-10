@@ -4,6 +4,12 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://mellstudio.id"),
 
+  icons: {
+    icon: "/new logo mell studio.png",
+    shortcut: "/new logo mell studio.png",
+    apple: "/new logo mell studio.png",
+  },
+
   title: {
     default: "Mell Studio | Percetakan Undangan Gorontalo",
     template: "%s | Mell Studio",
@@ -35,7 +41,6 @@ export const metadata: Metadata = {
   ],
 
   creator: "Mell Studio",
-
   publisher: "Mell Studio",
 
   alternates: {
@@ -119,9 +124,7 @@ export default function RootLayout({
                 name: "Gorontalo",
               },
 
-              sameAs: [
-                "https://www.instagram.com/mellstudio_gtlo/",
-              ],
+              sameAs: ["https://www.instagram.com/mellstudio_gtlo/"],
             }),
           }}
         />
