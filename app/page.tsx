@@ -2,9 +2,214 @@ import Link from "next/link";
 import Image from "next/image";
 import Footer from "./components/Footer";
 import products from "./Data/products";
-import gallery from "./Data/gallery";
 import galleryYasin from "./Data/gallery-yasin";
 import ProductCard from "./components/ProductCard";
+
+/* =========================================================
+   ORNAMEN BUNGA
+   Putih / Ivory + aksen Gold
+   Dibuat langsung dengan SVG, tanpa file gambar tambahan
+   ========================================================= */
+
+function FloralOrnament({
+  className = "",
+  flip = false,
+}: {
+  className?: string;
+  flip?: boolean;
+}) {
+  return (
+    <div
+      className={`pointer-events-none absolute ${className}`}
+      style={{
+        transform: flip ? "scaleX(-1)" : undefined,
+      }}
+      aria-hidden="true"
+    >
+      <svg
+        viewBox="0 0 360 420"
+        width="360"
+        height="420"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* Ranting gold utama */}
+
+        <path
+          d="M10 415C52 338 88 275 145 211C203 147 267 80 350 17"
+          stroke="#C7A35A"
+          strokeWidth="1.5"
+          opacity="0.8"
+        />
+
+        <path
+          d="M72 318C48 280 38 244 43 207"
+          stroke="#C7A35A"
+          strokeWidth="1"
+          opacity="0.75"
+        />
+
+        <path
+          d="M112 263C151 240 175 210 182 170"
+          stroke="#C7A35A"
+          strokeWidth="1"
+          opacity="0.75"
+        />
+
+        <path
+          d="M173 198C216 179 242 145 250 111"
+          stroke="#C7A35A"
+          strokeWidth="1"
+          opacity="0.75"
+        />
+
+        <path
+          d="M235 135C267 119 291 91 303 60"
+          stroke="#C7A35A"
+          strokeWidth="1"
+          opacity="0.75"
+        />
+
+        {/* Daun lembut */}
+
+        <g fill="#D7D0B7" opacity="0.5">
+          <ellipse
+            cx="55"
+            cy="279"
+            rx="6"
+            ry="18"
+            transform="rotate(-40 55 279)"
+          />
+
+          <ellipse
+            cx="83"
+            cy="319"
+            rx="6"
+            ry="18"
+            transform="rotate(42 83 319)"
+          />
+
+          <ellipse
+            cx="139"
+            cy="235"
+            rx="6"
+            ry="18"
+            transform="rotate(-45 139 235)"
+          />
+
+          <ellipse
+            cx="181"
+            cy="183"
+            rx="6"
+            ry="18"
+            transform="rotate(42 181 183)"
+          />
+
+          <ellipse
+            cx="226"
+            cy="148"
+            rx="6"
+            ry="17"
+            transform="rotate(-42 226 148)"
+          />
+
+          <ellipse
+            cx="275"
+            cy="103"
+            rx="6"
+            ry="17"
+            transform="rotate(42 275 103)"
+          />
+        </g>
+
+        {/* Bunga putih / ivory */}
+
+        <g
+          fill="#FFFDF7"
+          stroke="#D8B875"
+          strokeWidth="0.8"
+        >
+          <g transform="translate(43 207)">
+            <circle cx="0" cy="-8" r="5" />
+            <circle cx="8" cy="0" r="5" />
+            <circle cx="0" cy="8" r="5" />
+            <circle cx="-8" cy="0" r="5" />
+            <circle cx="0" cy="0" r="2" fill="#C7A35A" />
+          </g>
+
+          <g transform="translate(92 249)">
+            <circle cx="0" cy="-7" r="4.5" />
+            <circle cx="7" cy="0" r="4.5" />
+            <circle cx="0" cy="7" r="4.5" />
+            <circle cx="-7" cy="0" r="4.5" />
+            <circle cx="0" cy="0" r="1.8" fill="#C7A35A" />
+          </g>
+
+          <g transform="translate(181 170)">
+            <circle cx="0" cy="-8" r="5" />
+            <circle cx="8" cy="0" r="5" />
+            <circle cx="0" cy="8" r="5" />
+            <circle cx="-8" cy="0" r="5" />
+            <circle cx="0" cy="0" r="2" fill="#C7A35A" />
+          </g>
+
+          <g transform="translate(250 111)">
+            <circle cx="0" cy="-7" r="4.5" />
+            <circle cx="7" cy="0" r="4.5" />
+            <circle cx="0" cy="7" r="4.5" />
+            <circle cx="-7" cy="0" r="4.5" />
+            <circle cx="0" cy="0" r="1.8" fill="#C7A35A" />
+          </g>
+
+          <g transform="translate(303 60)">
+            <circle cx="0" cy="-7" r="4.5" />
+            <circle cx="7" cy="0" r="4.5" />
+            <circle cx="0" cy="7" r="4.5" />
+            <circle cx="-7" cy="0" r="4.5" />
+            <circle cx="0" cy="0" r="1.8" fill="#C7A35A" />
+          </g>
+        </g>
+
+        {/* Bunga kecil */}
+
+        <g
+          fill="#FFFDF7"
+          stroke="#D8B875"
+          strokeWidth="0.6"
+        >
+          <circle cx="67" cy="292" r="3.5" />
+          <circle cx="108" cy="231" r="3" />
+          <circle cx="126" cy="263" r="3.5" />
+          <circle cx="155" cy="215" r="3" />
+          <circle cx="205" cy="151" r="3.5" />
+          <circle cx="227" cy="128" r="3" />
+          <circle cx="270" cy="91" r="3.5" />
+          <circle cx="288" cy="74" r="3" />
+          <circle cx="325" cy="42" r="3.5" />
+        </g>
+
+        {/* Titik gold */}
+
+        <g fill="#C7A35A">
+          <circle cx="67" cy="292" r="1" />
+          <circle cx="108" cy="231" r="1" />
+          <circle cx="126" cy="263" r="1" />
+          <circle cx="155" cy="215" r="1" />
+          <circle cx="205" cy="151" r="1" />
+          <circle cx="227" cy="128" r="1" />
+          <circle cx="270" cy="91" r="1" />
+          <circle cx="288" cy="74" r="1" />
+          <circle cx="325" cy="42" r="1" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+
+/* =========================================================
+   HOME PAGE
+   ========================================================= */
 
 export default function HomePage() {
   const instagram =
@@ -25,20 +230,9 @@ export default function HomePage() {
   const googleMaps =
     "https://maps.app.goo.gl/PU2KYv1BFXGhFM7Q7";
 
-  /* =====================================================
-     FOTO DARI KATALOG YANG SUDAH ADA
-     ===================================================== */
+  const fotoUndangan = "/images/luxury.jpg";
 
-  // FOTO UNDANGAN
-  const semuaFotoUndangan =
-    Object.values(gallery).flat();
-
-  const fotoUndangan =
-    "/images/luxury.jpg";
-
-  // FOTO BUKU YASIN
-  const fotoYasin =
-    galleryYasin[0];
+  const fotoYasin = galleryYasin[0];
 
   return (
     <main className="min-h-screen bg-[#fcfaf6] text-[#343832]">
@@ -51,61 +245,63 @@ export default function HomePage() {
 
         <div className="mx-auto flex h-[82px] max-w-7xl items-center justify-between px-6">
 
-          {/* LOGO ASLI MELL STUDIO */}
+          {/* LOGO */}
 
           <Link
             href="/"
-            className="relative block h-14 w-48"
+            className="relative block h-16 w-56"
           >
             <Image
               src="/images/logo/logo-new.png"
               alt="Mell Studio"
               fill
               priority
-              sizes="200px"
+              sizes="220px"
               className="object-contain object-left"
             />
           </Link>
 
-          <div className="flex items-center gap-7">
 
-            {/* MENU */}
+          {/* MENU */}
 
-            <nav className="hidden items-center gap-9 md:flex">
+          <nav className="hidden items-center gap-9 md:flex">
 
-              <Link
-                href="/"
-                className="border-b border-[#b4873f] pb-1 text-sm font-medium text-[#343832]"
-              >
-                Beranda
-              </Link>
+            <Link
+              href="/"
+              className="border-b border-[#b4873f] pb-1 text-sm font-medium text-[#343832]"
+            >
+              Beranda
+            </Link>
 
-              <a
-                href="#kategori"
-                className="text-sm text-[#55564f] transition hover:text-[#a27c3f]"
-              >
-                Kategori
-              </a>
+            <a
+              href="#kategori"
+              className="text-sm text-[#55564f] transition hover:text-[#a27c3f]"
+            >
+              Kategori
+            </a>
 
-              <a
-                href="#produk"
-                className="text-sm text-[#55564f] transition hover:text-[#a27c3f]"
-              >
-                Produk
-              </a>
+            <a
+              href="#produk"
+              className="text-sm text-[#55564f] transition hover:text-[#a27c3f]"
+            >
+              Produk
+            </a>
 
-              <a
-                href="#tentang"
-                className="text-sm text-[#55564f] transition hover:text-[#a27c3f]"
-              >
-                Tentang
-              </a>
+            <a
+              href="#tentang"
+              className="text-sm text-[#55564f] transition hover:text-[#a27c3f]"
+            >
+              Tentang
+            </a>
 
-            </nav>
+          </nav>
 
-            {/* SOCIAL MEDIA */}
 
-            <div className="flex items-center gap-4 border-l border-[#e5dccd] pl-5">
+          {/* SOCIAL */}
+
+          <div className="flex items-center gap-4">
+
+            <div className="hidden items-center gap-4 border-l border-[#e5dccd] pl-5 sm:flex">
 
               {/* INSTAGRAM */}
 
@@ -147,6 +343,7 @@ export default function HomePage() {
                 </svg>
               </a>
 
+
               {/* FACEBOOK */}
 
               <a
@@ -165,6 +362,7 @@ export default function HomePage() {
                 </svg>
               </a>
 
+
               {/* TIKTOK */}
 
               <a
@@ -182,6 +380,7 @@ export default function HomePage() {
                   <path d="M16.5 3c.4 2.2 1.7 3.6 3.8 3.8v3.1c-1.4.1-2.7-.3-3.8-1v6.2c0 3.5-2.3 5.8-5.7 5.8-3.2 0-5.6-2.3-5.6-5.4 0-3.3 2.7-5.6 5.9-5.6.3 0 .6 0 .9.1v3.1c-.3-.1-.6-.2-.9-.2-1.5 0-2.7 1-2.7 2.5 0 1.4 1.1 2.5 2.5 2.5 1.7 0 2.6-1.1 2.6-3V3h3z" />
                 </svg>
               </a>
+
 
               {/* WHATSAPP */}
 
@@ -203,6 +402,15 @@ export default function HomePage() {
 
             </div>
 
+            <a
+              href={whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden rounded-lg bg-[#b4873f] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#987034] sm:block"
+            >
+              0821-9214-8895
+            </a>
+
           </div>
 
         </div>
@@ -216,112 +424,34 @@ export default function HomePage() {
 
       <section className="relative overflow-hidden bg-[#f7f1e7]">
 
-        {/* ORNAMEN KIRI */}
+        {/* ORNAMEN KIRI ATAS */}
 
-        <div className="pointer-events-none absolute -left-10 top-5 opacity-45">
-
-          <svg
-            width="220"
-            height="220"
-            viewBox="0 0 220 220"
-            fill="none"
-          >
-
-            <path
-              d="M15 205C55 155 70 90 155 25"
-              stroke="#9aa58b"
-              strokeWidth="1.4"
-            />
-
-            <path
-              d="M55 145C35 125 28 100 38 78"
-              stroke="#9aa58b"
-              strokeWidth="1"
-            />
-
-            <ellipse
-              cx="38"
-              cy="78"
-              rx="7"
-              ry="18"
-              transform="rotate(-25 38 78)"
-              fill="#b7c0aa"
-            />
-
-            <ellipse
-              cx="82"
-              cy="110"
-              rx="7"
-              ry="18"
-              transform="rotate(65 82 110)"
-              fill="#b7c0aa"
-            />
-
-            <circle
-              cx="155"
-              cy="25"
-              r="10"
-              stroke="#b89452"
-            />
-
-          </svg>
-
-        </div>
+        <FloralOrnament
+          className="-left-28 -top-28 z-20 scale-[0.65] opacity-90 sm:-left-20 sm:-top-24 sm:scale-[0.78] lg:-left-12 lg:-top-20 lg:scale-90"
+        />
 
 
-        {/* ORNAMEN KANAN */}
+        {/* ORNAMEN KANAN BAWAH */}
 
-        <div className="pointer-events-none absolute -bottom-10 -right-10 rotate-180 opacity-40">
-
-          <svg
-            width="240"
-            height="240"
-            viewBox="0 0 220 220"
-            fill="none"
-          >
-
-            <path
-              d="M15 205C55 155 70 90 155 25"
-              stroke="#9aa58b"
-              strokeWidth="1.4"
-            />
-
-            <ellipse
-              cx="85"
-              cy="105"
-              rx="7"
-              ry="18"
-              transform="rotate(65 85 105)"
-              fill="#b7c0aa"
-            />
-
-            <circle
-              cx="155"
-              cy="25"
-              r="10"
-              stroke="#b89452"
-            />
-
-          </svg>
-
-        </div>
+        <FloralOrnament
+          className="-bottom-28 -right-28 z-20 scale-[0.65] opacity-90 sm:-bottom-24 sm:-right-20 sm:scale-[0.78] lg:-bottom-20 lg:-right-12 lg:scale-90"
+          flip
+        />
 
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-6 py-24 md:grid-cols-2 md:py-28">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 py-14 md:grid-cols-[0.88fr_1.12fr] lg:py-16">
 
-          {/* HERO TEXT */}
+          {/* TEKS */}
 
-          <div className="relative z-10">
+          <div className="relative z-30 order-2 md:order-1">
 
-            <div className="mb-6 flex items-center gap-4">
+            <div className="mb-5 flex items-center gap-3">
 
-              <span className="h-px w-12 bg-[#b89452]" />
+              <span className="h-px w-10 bg-[#c7a35a]" />
 
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#a17b3e]">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#a17b3e]">
                 Mell Studio
               </p>
-
-              <span className="h-px w-12 bg-[#b89452]" />
 
             </div>
 
@@ -335,15 +465,15 @@ export default function HomePage() {
             </h1>
 
 
-            <p className="mt-6 max-w-xl font-serif text-2xl italic leading-relaxed text-[#91816d] sm:text-3xl">
+            <p className="mt-5 max-w-xl font-serif text-xl italic leading-relaxed text-[#91816d] sm:text-2xl">
               Untuk setiap momen dan kebutuhan Anda.
             </p>
 
 
-            <div className="mt-7 h-px w-28 bg-[#c5a76c]" />
+            <div className="mt-6 h-px w-24 bg-[#c7a35a]" />
 
 
-            <p className="mt-7 max-w-xl text-base leading-8 text-[#68675f]">
+            <p className="mt-6 max-w-xl text-base leading-8 text-[#68675f]">
 
               Koleksi undangan pernikahan dan Buku Yasin
               dengan desain elegan, material berkualitas,
@@ -353,11 +483,11 @@ export default function HomePage() {
             </p>
 
 
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-7 flex flex-wrap gap-3">
 
               <Link
                 href="/katalog/undangan?jenis=undangan"
-                className="rounded-xl bg-[#b4873f] px-7 py-3.5 text-sm font-semibold text-white shadow-md transition hover:bg-[#997034]"
+                className="rounded-lg bg-[#b4873f] px-7 py-3.5 text-sm font-semibold text-white shadow-md transition hover:bg-[#987034]"
               >
                 Lihat Undangan
               </Link>
@@ -365,7 +495,7 @@ export default function HomePage() {
 
               <Link
                 href="/katalog/undangan?jenis=yasin"
-                className="rounded-xl border border-[#b89452] bg-white/70 px-7 py-3.5 text-sm font-semibold text-[#8c6c38] transition hover:bg-white"
+                className="rounded-lg border border-[#b89452] bg-white/80 px-7 py-3.5 text-sm font-semibold text-[#8c6c38] transition hover:bg-white"
               >
                 Lihat Buku Yasin
               </Link>
@@ -375,21 +505,58 @@ export default function HomePage() {
           </div>
 
 
-          {/* LOGO */}
+          {/* DUA FOTO */}
 
-          <div className="relative z-10 flex justify-center md:justify-end">
+          <div className="relative z-10 order-1 md:order-2">
 
-            <div className="relative flex h-72 w-full max-w-xl items-center justify-center overflow-hidden rounded-[2rem] border border-[#dfcfb0] bg-white/90 p-10 shadow-[0_25px_60px_rgba(90,70,40,0.12)] sm:h-80">
+            <div className="relative grid grid-cols-2 items-end gap-3 sm:gap-5">
 
-              <Image
-                src="/images/logo/logo-new.png"
-                alt="Mell Studio"
-                width={1200}
-                height={459}
-                priority
-                sizes="(max-width: 768px) 90vw, 500px"
-                className="relative z-10 h-auto w-full max-w-lg object-contain"
-              />
+              {/* UNDANGAN */}
+
+              <div className="group relative aspect-[0.84/1] overflow-hidden rounded-[8px] border border-[#d8b875]/60 bg-white shadow-[0_20px_50px_rgba(90,70,40,0.13)]">
+
+                <Image
+                  src="/images/home/hero.jpg"
+                  alt="Undangan Mell Studio"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 48vw, 35vw"
+                  className="object-cover transition duration-700 group-hover:scale-[1.025]"
+                />
+
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent p-4 sm:p-5">
+
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white sm:text-xs">
+                    Undangan
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              {/* BUKU YASIN */}
+
+              <div className="group relative mt-8 aspect-[0.84/1] overflow-hidden rounded-[8px] border border-[#d8b875]/60 bg-white shadow-[0_20px_50px_rgba(90,70,40,0.13)] sm:mt-12">
+
+                <Image
+                  src="/images/home/yasin.jpg"
+                  alt="Buku Yasin Mell Studio"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 48vw, 35vw"
+                  className="object-cover transition duration-700 group-hover:scale-[1.025]"
+                />
+
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent p-4 sm:p-5">
+
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white sm:text-xs">
+                    Buku Yasin
+                  </p>
+
+                </div>
+
+              </div>
 
             </div>
 
@@ -410,8 +577,6 @@ export default function HomePage() {
       >
 
         <div className="mx-auto max-w-7xl px-6">
-
-          {/* JUDUL */}
 
           <div className="mb-12 text-center">
 
@@ -438,21 +603,14 @@ export default function HomePage() {
           </div>
 
 
-          {/* KARTU KATEGORI */}
-
           <div className="grid gap-7 md:grid-cols-2">
 
-
-            {/* =================================================
-                UNDANGAN
-                ================================================= */}
+            {/* UNDANGAN */}
 
             <Link
               href="/katalog/undangan?jenis=undangan"
               className="group relative overflow-hidden rounded-3xl border border-[#e8ddca] bg-[#faf7f1] shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-xl md:min-h-[330px]"
             >
-
-              {/* TEKS */}
 
               <div className="relative z-10 p-8 sm:p-10 md:max-w-[55%]">
 
@@ -480,79 +638,29 @@ export default function HomePage() {
               </div>
 
 
-              {/* FOTO UNDANGAN */}
+              <div className="relative mt-4 h-[260px] w-full overflow-hidden md:absolute md:bottom-0 md:right-0 md:mt-0 md:h-full md:w-[48%]">
 
-              {fotoUndangan && (
+                <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#faf7f1] via-transparent to-transparent md:bg-gradient-to-r md:from-[#faf7f1] md:via-transparent md:to-transparent" />
 
-                <div className="relative mt-4 h-[260px] w-full overflow-hidden md:absolute md:bottom-0 md:right-0 md:mt-0 md:h-full md:w-[48%]">
-
-                  <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#faf7f1] via-transparent to-transparent md:bg-gradient-to-r md:from-[#faf7f1] md:via-transparent md:to-transparent" />
-
-                  <Image
-                    src={fotoUndangan}
-                    alt="Koleksi Undangan Mell Studio"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 400px"
-                    className="object-cover object-center transition duration-700 group-hover:scale-105"
-                  />
-
-                </div>
-
-              )}
-
-
-              {/* ORNAMEN KECIL */}
-
-              <div className="pointer-events-none absolute left-0 top-0 opacity-35">
-
-                <svg
-                  width="105"
-                  height="105"
-                  viewBox="0 0 105 105"
-                  fill="none"
-                >
-
-                  <path
-                    d="M5 100C25 65 35 35 90 10"
-                    stroke="#9aa58b"
-                    strokeWidth="1"
-                  />
-
-                  <ellipse
-                    cx="32"
-                    cy="53"
-                    rx="5"
-                    ry="13"
-                    transform="rotate(-25 32 53)"
-                    fill="#b7c0aa"
-                  />
-
-                  <ellipse
-                    cx="58"
-                    cy="32"
-                    rx="5"
-                    ry="13"
-                    transform="rotate(65 58 32)"
-                    fill="#b7c0aa"
-                  />
-
-                </svg>
+                <Image
+                  src={fotoUndangan}
+                  alt="Koleksi Undangan Mell Studio"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 400px"
+                  className="object-cover object-center transition duration-700 group-hover:scale-105"
+                />
 
               </div>
 
             </Link>
 
 
-            {/* =================================================
-                BUKU YASIN
-                ================================================= */}
+            {/* BUKU YASIN */}
 
             <Link
               href="/katalog/undangan?jenis=yasin"
               className="group relative overflow-hidden rounded-3xl border border-[#e8ddca] bg-[#faf7f1] shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-xl md:min-h-[330px]"
             >
-
-              {/* TEKS */}
 
               <div className="relative z-10 p-8 sm:p-10 md:max-w-[55%]">
 
@@ -579,10 +687,7 @@ export default function HomePage() {
               </div>
 
 
-              {/* FOTO YASIN */}
-
               {fotoYasin && (
-
                 <div className="relative mt-4 h-[260px] w-full overflow-hidden md:absolute md:bottom-0 md:right-0 md:mt-0 md:h-full md:w-[48%]">
 
                   <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#faf7f1] via-transparent to-transparent md:bg-gradient-to-r md:from-[#faf7f1] md:via-transparent md:to-transparent" />
@@ -596,46 +701,7 @@ export default function HomePage() {
                   />
 
                 </div>
-
               )}
-
-
-              {/* ORNAMEN KECIL */}
-
-              <div className="pointer-events-none absolute right-0 top-0 opacity-30">
-
-                <svg
-                  width="120"
-                  height="120"
-                  viewBox="0 0 120 120"
-                  fill="none"
-                >
-
-                  <path
-                    d="M10 110C35 75 50 40 105 10"
-                    stroke="#9aa58b"
-                    strokeWidth="1"
-                  />
-
-                  <ellipse
-                    cx="55"
-                    cy="55"
-                    rx="5"
-                    ry="14"
-                    transform="rotate(65 55 55)"
-                    fill="#b7c0aa"
-                  />
-
-                  <circle
-                    cx="105"
-                    cy="10"
-                    r="8"
-                    stroke="#b89452"
-                  />
-
-                </svg>
-
-              </div>
 
             </Link>
 
@@ -690,12 +756,10 @@ export default function HomePage() {
           <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
 
             {products.slice(0, 8).map((product) => (
-
               <ProductCard
                 key={product.id}
                 product={product}
               />
-
             ))}
 
           </div>
@@ -706,7 +770,7 @@ export default function HomePage() {
 
 
       {/* =====================================================
-          LOKASI PERCETAKAN
+          LOKASI
           ===================================================== */}
 
       <section
@@ -718,7 +782,7 @@ export default function HomePage() {
 
           <div className="grid overflow-hidden rounded-3xl border border-[#e1d4ba] bg-white shadow-lg md:grid-cols-2">
 
-            {/* INFORMASI LOKASI */}
+            {/* INFORMASI */}
 
             <div className="p-9 sm:p-12">
 
@@ -758,47 +822,9 @@ export default function HomePage() {
             </div>
 
 
-            {/* KARTU ARAH */}
+            {/* KARTU LOKASI */}
 
             <div className="relative flex min-h-[300px] items-center justify-center overflow-hidden bg-[#3f463d] p-10">
-
-              <div className="pointer-events-none absolute -right-5 -top-5 opacity-20">
-
-                <svg
-                  width="200"
-                  height="200"
-                  viewBox="0 0 200 200"
-                  fill="none"
-                >
-
-                  <path
-                    d="M15 185C55 140 70 80 160 20"
-                    stroke="#d8c7a4"
-                    strokeWidth="1.5"
-                  />
-
-                  <ellipse
-                    cx="75"
-                    cy="115"
-                    rx="7"
-                    ry="18"
-                    transform="rotate(65 75 115)"
-                    fill="#d8c7a4"
-                  />
-
-                  <ellipse
-                    cx="115"
-                    cy="75"
-                    rx="7"
-                    ry="18"
-                    transform="rotate(65 115 75)"
-                    fill="#d8c7a4"
-                  />
-
-                </svg>
-
-              </div>
-
 
               <div className="relative text-center">
 
@@ -933,16 +959,20 @@ export default function HomePage() {
           </div>
 
           <p className="mt-7 text-base leading-8 text-[#68675f]">
+
             Mell Studio merupakan percetakan yang menyediakan
             berbagai pilihan undangan pernikahan dan Buku Yasin
             dengan desain elegan, material berkualitas, serta
             hasil cetak yang rapi.
+
           </p>
 
           <p className="mt-4 text-base leading-8 text-[#68675f]">
+
             Website ini dibuat sebagai katalog digital untuk
             memudahkan pelanggan melihat koleksi produk
             sebelum melakukan pemesanan.
+
           </p>
 
         </div>
